@@ -1,20 +1,30 @@
-<app-encabezado titulo="Pagina 2" icono="alert-circle"></app-encabezado>
+<app-encabezado titulo="Cambiar contraseña" icono="help-circle"></app-encabezado>
 
-<ion-content class="ion-padding">
+<ion-content class="ion-padding"  >
+<ion-img src="../assets/images/duoc.png"></ion-img>
+  <ion-text color="white">
+  
+    <p>Ingrese su nueva contraseña</p>
+  </ion-text>
 
-<ion-text color="primary">
-  <h1>Bienvenidos a la Pagina 2</h1>
-</ion-text>
+<ion-item>
+      <ion-label position="floating">Nueva contraseña</ion-label>
+      <ion-input type="password"  required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Repitir contraseña</ion-label>
+      <ion-input type="password"  required></ion-input>
+    </ion-item>
+    
+    <ion-button  expand="block" color="warning" (click)="presentAlert()">
+      Cambiar
+    </ion-button>
+  
+  
 
 
-<ion-button expand="full" color="success" href="pag3"  mode="ios">Ir pagina 3</ion-button>
 
 </ion-content>
 
-<ion-footer >
-  <ion-toolbar color="dark" >
-    <ion-text slot="end" color="light" class="ion-padding">
-    <p>App de ejemplo</p>
-  </ion-text>
-  </ion-toolbar>
-</ion-footer>
+<app-footer></app-footer>

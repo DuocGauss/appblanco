@@ -1,21 +1,20 @@
-<app-encabezado titulo="Pagina 3" icono="list"></app-encabezado>
+<app-encabezado titulo="Verificación" icono="help-circle"></app-encabezado>
 
-<ion-content>
-
-<ion-text color="secondary">
-  <h1>Bienvenidos a la Pagina 3</h1>
+<ion-content class="ion-padding">
+<ion-img src="../assets/images/duoc.png"></ion-img>
+<ion-text color="white">
+  <p>Ingrese tu código de verificación enviado a tu correo institucional</p>
 </ion-text>
 
+<ion-item>
+  <ion-label position="floating">Código</ion-label>
+  <ion-input type="number"  required ></ion-input>
+</ion-item>
 
-<!-- Default Searchbar -->
-<ion-searchbar></ion-searchbar>
+<ion-button expand="block" color="warning" routerLink="../pag2" >
+  Enviar
+</ion-button>
 
 </ion-content>
 
-<ion-footer>
-  <ion-toolbar color="warning">
-    <ion-text slot="end"  class="ion-padding">
-    <p>App de ejemplo</p>
-  </ion-text>
-  </ion-toolbar>
-</ion-footer>
+<app-footer></app-footer>

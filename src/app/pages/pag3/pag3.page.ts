@@ -7,6 +7,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Pag3Page implements OnInit {
 
+  personas= [{
+    nombre: "Gustavo",
+    apellido: "Bravo",
+    imagen:'../assets/images/user.png.png'
+
+  },
+  {
+    nombre: "Ignacio",
+    apellido: "Bravo",
+    imagen:'../assets/images/user.png.png'
+
+  },
+  {
+    nombre: "Gus",
+    apellido: "Bravo",
+    imagen:'../assets/images/user.png.png'
+
+  },
+]
+
   constructor() { }
 
   ngOnInit() {

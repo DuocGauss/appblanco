@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AlertController, MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-pag4',
@@ -7,9 +8,43 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Pag4Page implements OnInit {
 
-  constructor() { }
+  constructor(private alertController:AlertController, public menuCtrl:MenuController) { }
 
   ngOnInit() {
   }
+
+  async presentAlert() {
+    const alert = await this.alertController.create({
+      
+      header: 'Alert',
+      subHeader: 'Subtitle',
+      message: 'This is an alert message.',
+      buttons: ['OK']
+    });
+
+    await alert.present();
+
+    const { role } = await alert.onWillDismiss();
+    console.log('onDidDismiss resolved with role', role);
+  }
+
+  async presentAlert2() {
+    const alert = await this.alertController.create({
+      
+      header: 'Alert',
+      subHeader: 'Subtitle',
+      message: 'This is an alert message.',
+      buttons: ['OK']
+    });
+
+    await alert.present();
+
+    const { role } = await alert.onDidDismiss();
+    console.log('onDidDismiss resolved with role', role);
+  }
+   
+
+  
+  
 
 }

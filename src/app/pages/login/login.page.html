@@ -1,0 +1,42 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      
+    </ion-buttons>
+    <ion-title>
+      Iniciar Sesión
+    </ion-title>
+    <ion-icon slot="end" id="iconologin" name="power" class="ion-padding" color="primary"></ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content class="ion-padding">
+<ion-img src="../assets/images/duoc.png"></ion-img>
+<h3 id="centrartexto">RegistrAPP</h3>
+  <form miFormulario="ngForm" (ngSubmit)="onSubmit()">
+    <ion-item>
+      <ion-label position="floating">Usuario</ion-label>
+      <ion-input type="text" name="usr" required [(ngModel)]="usuario.username"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Contraseña</ion-label>
+      <ion-input type="password" name="psw" required [(ngModel)]="usuario.password"></ion-input>
+    </ion-item>
+    
+    <ion-button type="submit" expand="block" color="warning" >
+      Iniciar sesión
+    </ion-button>
+
+
+  </form>
+
+<a routerLink="../pag4"><p id="textoctr">¿Ha olvidado su contraseña?</p></a>
+
+
+</ion-content>
+
+
+
+<app-footer></app-footer>
