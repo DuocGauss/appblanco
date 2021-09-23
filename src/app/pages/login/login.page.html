@@ -12,8 +12,7 @@
 
 
 <ion-content class="ion-padding">
-<ion-img src="../assets/images/duoc.png"></ion-img>
-<h3 id="centrartexto">RegistrAPP</h3>
+<ion-img src="../assets/images/Sin_titulo_1.png"></ion-img>
   <form miFormulario="ngForm" (ngSubmit)="onSubmit()">
     <ion-item>
       <ion-label position="floating">Usuario</ion-label>
@@ -24,8 +23,8 @@
       <ion-label position="floating">Contraseña</ion-label>
       <ion-input type="password" name="psw" required [(ngModel)]="usuario.password"></ion-input>
     </ion-item>
-    
-    <ion-button type="submit" expand="block" color="warning" >
+    <br>
+    <ion-button type="submit" expand="block" color="warning" class="animate__animated animate__fadeInUp" >
       Iniciar sesión
     </ion-button>
 

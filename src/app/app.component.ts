@@ -19,7 +19,7 @@ export class AppComponent {
   {
     destino:'login',
     icono:'power',
-    texto:'Volver'
+    texto:'Salir'
 
   },
   
