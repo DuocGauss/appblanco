@@ -5,8 +5,8 @@
       <ion-menu-button menu="first" color="primary"></ion-menu-button>
     </ion-buttons>
     <ion-buttons slot="end">
-      <ion-button routerLink="../sumapage">
-        <ion-icon slot="icon-only" name="school"></ion-icon>
+      <ion-button  expand="block" color="warning" (click)="presentAlert()" class="animate__animated animate__bounce">
+        <ion-icon slot="icon-only" name="camera"></ion-icon>
       </ion-button>
     </ion-buttons>
     <ion-title>
@@ -29,9 +29,7 @@
 
     <ion-img src="../assets/images/escaner.png" style="width: 280px; height: 280px;"></ion-img>
 
-    <ion-button  expand="block" color="warning" (click)="presentAlert()" class="animate__animated animate__bounce">
-      Escanear codigos QR
-    </ion-button>
+    
   </div>
   <ion-text color="danger" *ngIf="nombreusuario===''" >
     <h1>Tiene que iniciar sesión para ver este contenido</h1>
@@ -41,6 +39,30 @@
 <ion-button expand="block" color="success" routerLink="../pag3" mode="ios">Ir pagina 3</ion-button>
 <ion-button expand="full" color="warning" routerLink="../pag4"  mode="ios">Ir pagina 4</ion-button>
 <ion-button expand="full" color="danger" routerLink="../sumapage"  mode="ios">Ir pagina de Suma</ion-button>  -->
+
+
+<ion-fab horizontal="center" vertical="bottom" slot="fixed">
+        <ion-fab-button color="warning">
+          <ion-icon  md="caret-up" ios="chevron-up-circle-outline"></ion-icon>
+        </ion-fab-button>
+        <ion-fab-list side="top">
+          <ion-fab-button color="primary">
+            <ion-icon name="logo-vimeo"></ion-icon>
+          </ion-fab-button>
+        </ion-fab-list>
+        <ion-fab-list side="end">
+          <ion-fab-button color="dark">
+            <ion-icon name="logo-twitter"></ion-icon>
+          </ion-fab-button>
+        
+        </ion-fab-list>
+        <ion-fab-list side="start">
+          <ion-fab-button color="light" routerLink="../sumapage">
+            <ion-icon name="school"></ion-icon>
+          </ion-fab-button>
+        </ion-fab-list>
+      </ion-fab>
+ 
 
 </ion-content>
 

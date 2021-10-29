@@ -1,6 +1,8 @@
+
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
+
 
 
 @Component({
@@ -38,5 +40,8 @@ export class HomePage {
     const { role } = await alert.onWillDismiss();
     console.log('onDidDismiss resolved with role', role);
   }
+
+  
+  
   
 }
