@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Opcionmenu } from './interfaces/opcionmenu';
+import { Storage } from '@ionic/storage-angular';
 
 @Component({
   selector: 'app-root',
@@ -7,6 +8,7 @@ import { Opcionmenu } from './interfaces/opcionmenu';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
+  
 
   opciones:Opcionmenu[]=[
     
@@ -26,5 +28,9 @@ export class AppComponent {
   
 
 ]
-  constructor() {}
+constructor(private storage:Storage) {}
+
+async ngOnInit() {
+  await this.storage.create();
+}
 }
