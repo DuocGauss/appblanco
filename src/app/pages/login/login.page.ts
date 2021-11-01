@@ -41,7 +41,6 @@ export class LoginPage implements OnInit {
 
   async presentAlert() {
     const alert = await this.alertController.create({
-      cssClass: 'personalizada',
       header: 'Error al ingresar',
       subHeader: 'Datos no validos',
       message: 'Reingrese usuario y/o contraseña',
@@ -66,7 +65,7 @@ export class LoginPage implements OnInit {
         state:{miusuario:this.usuario}
       }
 
-      this.router.navigate(['/home'], navextras);
+      this.router.navigate(['/tabs/home'], navextras);
       
     }
     else

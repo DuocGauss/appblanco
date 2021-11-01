@@ -13,12 +13,6 @@ export class AppComponent {
   opciones:Opcionmenu[]=[
     
   {
-    destino:'home',
-    icono:'home',
-    texto:'Inicio'
-
-  },
-  {
     destino:'login',
     icono:'power',
     texto:'Salir'
