@@ -1,5 +1,6 @@
 import {Component, ViewChild, ViewEncapsulation, OnInit} from '@angular/core';
 import {QrScannerComponent} from 'angular2-qrscanner';
+import { AlertController, NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-qr',
@@ -9,7 +10,7 @@ import {QrScannerComponent} from 'angular2-qrscanner';
 })
 export class QrPage implements OnInit {
 
-  constructor() { 
+  constructor(private alertController:AlertController, private navCtrl:NavController) { 
   }
   @ViewChild(QrScannerComponent,
     {static:true}) qrScannerComponent: QrScannerComponent ;
@@ -31,22 +32,46 @@ export class QrPage implements OnInit {
                   choosenDev = dev;
                   break;
               }
+              
           }
           if (choosenDev) {
-              this.qrScannerComponent.chooseCamera.next(choosenDev);
+              this.qrScannerComponent.chooseCamera.next(choosenDev);  
+              
           } else {
               this.qrScannerComponent.chooseCamera.next(videoDevices[0]);
+              
           }
       }
   });
 
   this.qrScannerComponent.capturedQr.subscribe(result => {
       console.log(result);
+      this.presentAlert();
   });
 }
 ngAfterViewInit():void {
 
 }
+
+async presentAlert() {
+    const alert = await this.alertController.create({
+      header: 'Exito!',
+      subHeader: 'QR escaneado correctamente',
+      message: 'Asistencia registrada',
+      buttons: [
+        {
+          text: 'OK',
+          role: 'cancel',
+          handler: () => {
+            this.navCtrl.navigateRoot('tabs/home');
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
+
 }
 
   
