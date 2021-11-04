@@ -61,7 +61,7 @@ async presentAlert() {
     const alert = await this.alertController.create({
       header: 'Exito!',
       subHeader: 'QR escaneado correctamente',
-      message: 'Se le redigira a la pagina de asistencia',
+      message: 'Se le redirigirá a la pagina de asistencia',
       buttons: [
         {
           text: 'Vale',

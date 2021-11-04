@@ -1,8 +1,5 @@
 <ion-header>
   <ion-toolbar>
-  <ion-buttons slot="start">
-  <ion-back-button defaultHref="home" text="volver" mode="ios"></ion-back-button>
-  </ion-buttons>
     <ion-title>Registrarse</ion-title>
     <ion-icon slot="end" [name]="icono" class="ion-padding" color="primary"></ion-icon>
   </ion-toolbar>
@@ -10,10 +7,6 @@
 
 <ion-content class="ion-padding">
 <form #formulario="ngForm" (ngSubmit)="onSubmit()">
-<ion-item>
-  <ion-label position="floating" class="animate__animated animate__fadeIn">Correo institucional</ion-label>
-  <ion-input type="email" class="animate__animated animate__fadeIn"   required ></ion-input>
-</ion-item>
   <ion-item>
     <ion-label position="floating" class="animate__animated animate__fadeIn">Nombre de usuario</ion-label>
     <ion-input required name="username" type="text" class="animate__animated animate__fadeIn" [(ngModel)]="usuario.username"></ion-input>
@@ -22,10 +15,6 @@
     <ion-label position="floating" class="animate__animated animate__fadeIn">Contraseña</ion-label>
     <ion-input required name="password" class="animate__animated animate__fadeIn" type="password" [(ngModel)]="usuario.password"></ion-input>
   </ion-item>
-  <ion-item>
-      <ion-label position="floating" class="animate__animated animate__fadeIn">Repetir Contraseña</ion-label>
-      <ion-input type="password" class=" animate__animated animate__fadeIn" name="psw" required></ion-input>
-    </ion-item>
   <ion-button expand="block" color="warning" class="animate__animated animate__fadeInUp" type="submit" [disabled]="formulario.invalid" (click)="presentAlert()">
     Registrarse
   </ion-button>

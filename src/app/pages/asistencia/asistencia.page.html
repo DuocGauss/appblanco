@@ -10,6 +10,10 @@
 <ion-content class="ion-padding">
 <form #formulario="ngForm" (ngSubmit)="onSubmit()">
   <ion-item>
+    <ion-label position="floating" class="animate__animated animate__fadeIn">Nombre asignatura</ion-label>
+    <ion-input required name="username" type="text" class="animate__animated animate__fadeIn" [(ngModel)]="register.nombre"></ion-input>
+  </ion-item>
+  <ion-item>
     <ion-label position="floating" class="animate__animated animate__fadeIn">Sección</ion-label>
     <ion-input required name="username" type="text" class="animate__animated animate__fadeIn" [(ngModel)]="register.seccion"></ion-input>
   </ion-item>

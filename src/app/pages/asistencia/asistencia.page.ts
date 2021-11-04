@@ -12,6 +12,7 @@ export class AsistenciaPage implements OnInit {
 
   register:Register=
   {
+    nombre:'',
     seccion:'',
     fecha:'',
   }
@@ -25,7 +26,7 @@ export class AsistenciaPage implements OnInit {
 
   async guardar(registr:Register)
   {
-    await this.storage.set(registr.seccion,registr);
+    await this.storage.set(registr.nombre,registr);
   } 
 
   onSubmit()
