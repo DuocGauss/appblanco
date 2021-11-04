@@ -2,6 +2,8 @@ import {Component, ViewChild, ViewEncapsulation, OnInit} from '@angular/core';
 import {QrScannerComponent} from 'angular2-qrscanner';
 import { AlertController, NavController } from '@ionic/angular';
 
+import { Storage } from '@ionic/storage-angular'
+
 @Component({
   selector: 'app-qr',
   templateUrl: './qr.page.html',
@@ -10,7 +12,9 @@ import { AlertController, NavController } from '@ionic/angular';
 })
 export class QrPage implements OnInit {
 
-  constructor(private alertController:AlertController, private navCtrl:NavController) { 
+  
+
+  constructor(private alertController:AlertController, private navCtrl:NavController, private storage:Storage) { 
   }
   @ViewChild(QrScannerComponent,
     {static:true}) qrScannerComponent: QrScannerComponent ;
@@ -57,19 +61,27 @@ async presentAlert() {
     const alert = await this.alertController.create({
       header: 'Exito!',
       subHeader: 'QR escaneado correctamente',
-      message: 'Asistencia registrada',
+      message: 'Se le redigira a la pagina de asistencia',
       buttons: [
         {
-          text: 'OK',
+          text: 'Vale',
           role: 'cancel',
-          handler: () => {
-            this.navCtrl.navigateRoot('tabs/home');
+          handler: (data) => {
+            this.navCtrl.navigateRoot('/asistencia');
           }
         }
       ]
     });
 
     await alert.present();
+  }
+
+
+   
+
+  onSubmit()
+  {
+    
   }
 
 }
