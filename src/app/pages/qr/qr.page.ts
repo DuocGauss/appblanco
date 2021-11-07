@@ -2,7 +2,7 @@ import {Component, ViewChild, ViewEncapsulation, OnInit} from '@angular/core';
 import {QrScannerComponent} from 'angular2-qrscanner';
 import { AlertController, NavController } from '@ionic/angular';
 import { Register } from 'src/app/interfaces/register';
-
+import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 import { Storage } from '@ionic/storage-angular'
 
 @Component({
@@ -19,52 +19,28 @@ export class QrPage implements OnInit {
     seccion:'',
     fecha:'',
   }
+ 
+  code: any;
 
-
-  constructor(private alertController:AlertController, private navCtrl:NavController, private storage:Storage) { 
+  constructor(private alertController:AlertController, private navCtrl:NavController, private storage:Storage, private barcodeScanner: BarcodeScanner) { 
   }
   @ViewChild(QrScannerComponent,
     {static:true}) qrScannerComponent: QrScannerComponent ;
 
   ngOnInit() {
 
-    this.qrScannerComponent.getMediaDevices().then(devices => {
-      console.log(devices);
-      const videoDevices: MediaDeviceInfo[] = [];
-      for (const device of devices) {
-          if (device.kind.toString() === 'videoinput') {
-              videoDevices.push(device);
-          }
-      }
-      if (videoDevices.length > 0){
-          let choosenDev;
-          for (const dev of videoDevices){
-              if (dev.label.includes('front')){
-                  choosenDev = dev;
-                  break;
-              }
-              
-          }
-          if (choosenDev) {
-              this.qrScannerComponent.chooseCamera.next(choosenDev);  
-              
-          } else {
-              this.qrScannerComponent.chooseCamera.next(videoDevices[0]);
-              
-          }
-      }
-  });
-
-  this.qrScannerComponent.capturedQr.subscribe(result => {
-      console.log(result)
-      this.storage.get(result).then((result) => {
-       this.guardar(result);
-      this.presentAlert();
-
-    });
     
-  });
 }
+
+  scan(){
+    this.barcodeScanner.scan().then(barcodeData => {
+      this.code = barcodeData.text;
+      console.log('Barcode data', this.code);
+     }).catch(err => {
+         console.log('Error', err);
+     });
+  }
+
 ngAfterViewInit():void {
 
 }

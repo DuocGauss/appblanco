@@ -13,12 +13,7 @@
 
 <ion-content>
 
-<qr-scanner 
-        [debug]="false"
-        [canvasWidth]="1080"                               
-        [canvasHeight]="720" 
-        [stopAfterScan]="false" 
-        [updateTime]="500">
-</qr-scanner>
+<ion-button (click)="scan()" class="animate__animated animate__fadeInUp" expand="block" color="warning">Escanear QR</ion-button>
+{{code}}
 
 </ion-content>
