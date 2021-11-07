@@ -1,6 +1,7 @@
 import {Component, ViewChild, ViewEncapsulation, OnInit} from '@angular/core';
 import {QrScannerComponent} from 'angular2-qrscanner';
 import { AlertController, NavController } from '@ionic/angular';
+import { Register } from 'src/app/interfaces/register';
 
 import { Storage } from '@ionic/storage-angular'
 
@@ -12,7 +13,13 @@ import { Storage } from '@ionic/storage-angular'
 })
 export class QrPage implements OnInit {
 
-  
+  register:Register=
+  {
+    nombre:'',
+    seccion:'',
+    fecha:'',
+  }
+
 
   constructor(private alertController:AlertController, private navCtrl:NavController, private storage:Storage) { 
   }
@@ -49,8 +56,13 @@ export class QrPage implements OnInit {
   });
 
   this.qrScannerComponent.capturedQr.subscribe(result => {
-      console.log(result);
+      console.log(result)
+      this.storage.get(result).then((result) => {
+       this.guardar(result);
       this.presentAlert();
+
+    });
+    
   });
 }
 ngAfterViewInit():void {
@@ -76,8 +88,13 @@ async presentAlert() {
     await alert.present();
   }
 
-
+  async guardar(registr:Register )
+  {
+    await this.storage.set(registr.nombre,registr);
+  } 
    
+ 
+  
 
   onSubmit()
   {
