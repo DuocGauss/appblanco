@@ -1,5 +1,5 @@
-import {Component, ViewChild, ViewEncapsulation, OnInit} from '@angular/core';
-import {QrScannerComponent} from 'angular2-qrscanner';
+import {Component, OnInit} from '@angular/core';
+import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner/ngx';
 import { AlertController, NavController } from '@ionic/angular';
 
 import { Storage } from '@ionic/storage-angular'
@@ -7,51 +7,19 @@ import { Storage } from '@ionic/storage-angular'
 @Component({
   selector: 'app-qr',
   templateUrl: './qr.page.html',
-  styleUrls: ['./qr.page.scss'],
-  encapsulation: ViewEncapsulation.None
+  styleUrls: ['./qr.page.scss']
 })
 export class QrPage implements OnInit {
 
   
 
-  constructor(private alertController:AlertController, private navCtrl:NavController, private storage:Storage) { 
+  constructor(private alertController:AlertController, private navCtrl:NavController, private storage:Storage, private qr:QRScanner) { 
   }
-  @ViewChild(QrScannerComponent,
-    {static:true}) qrScannerComponent: QrScannerComponent ;
+  
 
   ngOnInit() {
 
-    this.qrScannerComponent.getMediaDevices().then(devices => {
-      console.log(devices);
-      const videoDevices: MediaDeviceInfo[] = [];
-      for (const device of devices) {
-          if (device.kind.toString() === 'videoinput') {
-              videoDevices.push(device);
-          }
-      }
-      if (videoDevices.length > 0){
-          let choosenDev;
-          for (const dev of videoDevices){
-              if (dev.label.includes('front')){
-                  choosenDev = dev;
-                  break;
-              }
-              
-          }
-          if (choosenDev) {
-              this.qrScannerComponent.chooseCamera.next(choosenDev);  
-              
-          } else {
-              this.qrScannerComponent.chooseCamera.next(videoDevices[0]);
-              
-          }
-      }
-  });
-
-  this.qrScannerComponent.capturedQr.subscribe(result => {
-      console.log(result);
-      this.presentAlert();
-  });
+    this.StartScanning();
 }
 ngAfterViewInit():void {
 
@@ -79,10 +47,32 @@ async presentAlert() {
 
    
 
-  onSubmit()
-  {
+  StartScanning(){
+
+  
+    // Optionally request the permission early
+    this.qr.prepare()
+    .then((status: QRScannerStatus) => {
+       if (status.authorized) {
+         // camera permission was granted
+         this.qr.show();
+         document.getElementsByTagName("body")[0].style.opacity = "0";
+         this.qr.scan().subscribe((val)=>{
+           alert(val);
+           document.getElementsByTagName("body")[0].style.opacity = "0";
+         })    
     
-  }
+       } else if (status.denied) {
+         // camera permission was permanently denied
+         // you must use QRScanner.openSettings() method to guide the user to the settings page
+         // then they can grant the permission from there
+       } else {
+         // permission was denied, but not permanently. You can ask for permission again at a later time.
+       }
+    })
+    .catch((e: any) => console.log('Error is', e));
+    
+    } 
 
 }
 

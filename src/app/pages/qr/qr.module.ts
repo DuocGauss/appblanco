@@ -8,7 +8,7 @@ import { QrPageRoutingModule } from './qr-routing.module';
 
 import { QrPage } from './qr.page';
 
-import { NgQrScannerModule } from 'angular2-qrscanner';
+
 
 @NgModule({
   imports: [
@@ -16,7 +16,6 @@ import { NgQrScannerModule } from 'angular2-qrscanner';
     FormsModule,
     IonicModule,
     QrPageRoutingModule,
-    NgQrScannerModule
   ],
   declarations: [QrPage]
 })
